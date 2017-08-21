@@ -26,9 +26,9 @@ module Chordproko
 							textified += item.to_s
 					  when "Chordproko::ChordGroup"
 					  	item.key = @options[:transpose] if @options[:transpose] rescue 0
-					  	chord_group = item.to_s
-					   	chords += (" " * (prev_lyrics.size - prev_chord.size).abs)+ chord_group
-					   	prev_chord = chord_group
+					  	cgroup = item.to_s
+					   	chords += (" " * (prev_lyrics.size - prev_chord.size).abs) + chord_group_format(cgroup)
+					   	prev_chord = cgroup
 
 					  when "Chordproko::Lyric"
 					    prev_lyrics = item.to_s
@@ -37,12 +37,31 @@ module Chordproko
 					end #case
 				end #line
 			  chord_lyrics = []
-			  chord_lyrics << chords if chords.size > 0
-			  chord_lyrics << lyrics if lyrics.size > 0
+			  chord_lyrics << chord_line_format(chords) if chords.size > 0
+			  chord_lyrics << lyric_line_format(lyrics) if lyrics.size > 0
 				textified += chord_lyrics.join("\n")
 				textified += "\n"
 			end #sheet
 			textified
+		end
+		
+		def chord_group_format str
+			str
+		end
+		def lyric_line_format str
+			str
+		end
+		def chord_line_format str
+			str
+		end
+		def comment_format str
+			str
+		end
+		def directive_format str
+			str
+		end
+		def lyric_format str
+			str
 		end
 	end
 end
