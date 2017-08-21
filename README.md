@@ -51,17 +51,46 @@ parsed = Chordproko::Parser.new.parse(file.read)
 ```
 Then, create your own **Transform** class.
 
-## TODO
-
-+ Enable you to extend PlainSong class
-
+### Extending PlainSong Formatter
 ```ruby
-class MySongFormat < Chordproko::PlainSong
-	...
+class MyPlainSong < Chordproko::PlainSong
+	def initialize transformed, options={}
+		super(transformed, options)
+	end
+	def chord_group_format str
+		"<span>#{str}</span>"
+	end
+	def lyric_line_format str
+		"<div>#{str}</div>"
+	end
 end
 ```
 
-PlainSong is responsible in formatting the ChordPro format to a readable plain text format. 
+Set the Chordproko formatter class. This will globally set our formatter.
+
+```ruby
+Chordproko.set_formatter_class("PlainSong")
+```
+
+Then use the Chordproko ```.text``` method
+
+Aside from those two methods, you can override these to modify your song sheet.
+
+```ruby
+def chord_line_format str
+	...
+end
+def comment_format str
+	...
+end
+def directive_format str
+	...
+end
+def lyric_format str
+	...
+end
+```
+## TODO
 
 + Improve specs
 + Improve documentations
