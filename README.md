@@ -69,7 +69,7 @@ end
 Set the Chordproko formatter class. This will globally set our formatter.
 
 ```ruby
-Chordproko.set_formatter_class("PlainSong")
+Chordproko.set_formatter_class("MyPlainSong")
 ```
 
 Then use the Chordproko ```.text``` method
