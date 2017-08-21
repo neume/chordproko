@@ -54,15 +54,15 @@ Then, create your own **Transform** class.
 ### Extending PlainSong Formatter
 ```ruby
 class MyPlainSong < Chordproko::PlainSong
-	def initialize transformed, options={}
-		super(transformed, options)
-	end
-	def chord_group_format str
-		"<span>#{str}</span>"
-	end
-	def lyric_line_format str
-		"<div>#{str}</div>"
-	end
+  def initialize transformed, options={}
+    super(transformed, options)
+  end
+  def chord_group_format str
+    "<span>#{str}</span>"
+  end
+  def lyric_line_format str
+    "<div>#{str}</div>"
+  end
 end
 ```
 
@@ -78,16 +78,16 @@ Aside from those two methods, you can override these to modify your song sheet.
 
 ```ruby
 def chord_line_format str
-	...
+  ...
 end
 def comment_format str
-	...
+  ...
 end
 def directive_format str
-	...
+  ...
 end
 def lyric_format str
-	...
+  ...
 end
 ```
 ## TODO
